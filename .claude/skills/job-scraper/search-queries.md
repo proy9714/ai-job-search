@@ -1,84 +1,129 @@
 # Search Queries for Job Scraper
 
-<!-- SETUP: Customize these queries based on your skills, target roles, and location -->
+<!-- Populated by /setup on 2026-11-02 for Priyadarshi Roy. Re-run `/setup --section search` to change. -->
 
 ## Installed portal CLIs (primary for `/scrape`)
 
-`/scrape` discovers every portal skill under `.agents/skills/*/SKILL.md` and runs its CLI first. Shipped country-agnostic CLIs include `linkedin-search` and `freehire-search`; Danish demos and any skill you add with `/add-portal` are included the same way. You do **not** need a matching `site:` line below for those CLIs to run.
+`/scrape` discovers every portal skill under `.agents/skills/*/SKILL.md` and runs its CLI first. Enabled now: `linkedin-search`, `freehire-search`. The Danish demo portals (Jobindex, Jobbank, Jobdanmark, Jobnet) stay **disabled** because Denmark is not a target market. More boards for Germany, Europe and India are to be added with `/add-portal` (see "Search Sites" below). You do **not** need a matching `site:` line below for those CLIs to run.
 
-The `site:` query templates in this file are the **WebSearch fallback** — for portals without a CLI, company career pages, or when a CLI fails.
+The `site:` query templates in this file are the **WebSearch fallback**: for portals without a CLI, company career pages, or when a CLI fails.
 
-**Language scope:** write every query category in every language listed in your CLAUDE.md Languages table (typically 1-2, sometimes more). A posting requiring a language you have *not* declared, as a job condition, is excluded before scoring; a posting requiring a *higher level* than you declared in a language you *do* work in is flagged for your own judgment, not excluded — see `04-job-evaluation.md`'s Language Gate, the single source of truth for this rule. Translate each category's keywords rather than machine-translating word-for-word (e.g. "Frontend Developer" -> "Desarrollador Frontend", not a literal word-for-word translation) if you work in more than one language.
+**Language scope:** the candidate works in **English only**. Write every query in English. Do not generate German-language query variants: a role that needs German above A2 is a FAIL under `04-job-evaluation.md`. English postings from German employers are the target.
+
+## Hard filters to apply to every result
+
+- **Full-time, permanent only.** Drop internships, working-student (Werkstudent), thesis, part-time, freelance and fixed-term-only postings.
+- **Language:** drop postings requiring German above A2 or any non-English working language.
+- **Salary floor (when stated):** EUR 60,000/year in Europe; INR 15 lakh/year in India.
+- **Work permit (Europe):** drop EU-citizens-only or "no visa sponsorship" postings. Mark "sponsorship unverified" when silent. Student permit expires March 2027.
 
 ## Search Sites
 
-Primary (your market's job boards - scaffold one with `/add-portal`):
-- **[YOUR_JOB_BOARD]** - your market's largest general job board
-- **linkedin.com/jobs** - LinkedIn job listings (filter: [YOUR_COUNTRY] / [YOUR_CITY]); also covered by `linkedin-search` CLI
-- **[YOUR_INDUSTRY_JOB_BOARD]** - a niche/industry board for your field (optional)
-- **[YOUR_ADDITIONAL_JOB_BOARD]** - another major board for your market (optional)
+Primary:
+- **linkedin.com/jobs** - Europe-wide and India; covered by the `linkedin-search` CLI
+- **freehire** - covered by the `freehire-search` CLI
 
-Secondary (company career pages via Google):
-- Direct Google searches with `site:` filters for known target companies
+To add with `/add-portal` (fallback to `site:` queries until then):
+- **Germany / Europe:** stepstone.de, de.indeed.com, arbeitsagentur.de (Jobbörse), glassdoor.de, xing.com/jobs, eurotechjobs.com, relocate.me, englishjobs.de, berlinstartupjobs.com, euraxess.ec.europa.eu (research)
+- **India:** naukri.com, instahyre.com, hirist.tech, cutshort.io, foundit.in, in.indeed.com, wellfound.com
+
+Secondary (company career pages via Google `site:` queries) - top-paying employers:
+- **Big Tech:** careers.google.com, amazon.jobs, metacareers.com, jobs.apple.com, careers.microsoft.com, nvidia.wd5.myworkdayjobs.com, jobs.netflix.com
+- **AI labs and scale-ups:** deepmind.google, mistral.ai/careers, aleph-alpha.com, deepl.com/careers, huggingface.co/jobs, databricks.com/company/careers, snowflake.com/careers, uber.com/careers, booking.com/careers, zalando.com/careers
+- **Industrial AI / R&D (Germany):** jobs.bosch.com, bmwgroup.jobs, jobs.sap.com, zeiss.com/careers, jobs.siemens.com, jobs.dlr.de, jobs.fraunhofer.de, careers.allianz.com
+- **India high-pay:** Google, Microsoft, Amazon, Adobe, Uber, Atlassian, Salesforce, Flipkart, PhonePe, Razorpay, Swiggy (India offices)
 
 ## Query Categories
 
-Queries are grouped by priority. Write **each category in every language from your Languages table** (see Language scope above). Combine each query with your location terms (e.g. your city, region, or metro area) where the site supports it.
+All three directions are weighted equally (candidate's choice). Combine each query with location terms: `Germany`, `Europe`, `remote`, `Berlin`, `Munich`, `Frankfurt`, `Amsterdam`, `London`, `Zurich`, `Dublin` for Europe; `India`, `Bengaluru`, `Hyderabad`, `Pune`, `Gurugram`, `Kolkata` for India.
 
-**Organize by function, not job title.** The same underlying work carries different titles across companies and markets (a "Data Scientist" role at one employer may be posted as "Insights Analyst" or "Data Consultant" at another). Name each priority category after the function it covers, and list several plausible job titles as query variants within that category rather than betting an entire priority tier on one exact title string.
+### Priority 1: LLM / GenAI / NLP Engineering
 
-### Priority 1: [YOUR_PRIMARY_ROLE_TYPE]
-
-These match your strongest and most desired career direction.
+Strongest industry experience: RAG, LLM applications, NLP.
 
 ```
-site:[YOUR_JOB_BOARD] "[YOUR_PRIMARY_JOB_TITLE_1]" [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "[YOUR_PRIMARY_JOB_TITLE_2]" [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "[YOUR_KEY_SKILL]" [YOUR_CITY]
-site:linkedin.com/jobs "[YOUR_PRIMARY_JOB_TITLE_1]" [YOUR_COUNTRY]
+site:linkedin.com/jobs "Machine Learning Engineer" LLM Germany
+site:linkedin.com/jobs "AI Engineer" "RAG" Europe
+site:linkedin.com/jobs "LLM Engineer" OR "GenAI Engineer" OR "Generative AI Engineer" Germany
+site:linkedin.com/jobs "NLP Engineer" Europe
+site:linkedin.com/jobs "Data Scientist" "Generative AI" Germany
+site:stepstone.de "Machine Learning Engineer" English LLM
+site:naukri.com "Machine Learning Engineer" LLM RAG Bengaluru
+site:hirist.tech "GenAI Engineer" OR "LLM Engineer"
 ```
 
-### Priority 2: [YOUR_DOMAIN_EXPERTISE]
+### Priority 1: Computer Vision / Multimodal AI
 
-These match your domain expertise.
-
-```
-site:[YOUR_JOB_BOARD] [YOUR_DOMAIN_KEYWORD_1] [YOUR_CITY] OR [YOUR_REGION]
-site:[YOUR_JOB_BOARD] [YOUR_DOMAIN_KEYWORD_2] [YOUR_COUNTRY]
-site:linkedin.com/jobs [YOUR_DOMAIN_KEYWORD_1] [YOUR_CITY] [YOUR_COUNTRY]
-```
-
-### Priority 3: [YOUR_ADJACENT_ROLE_TYPE]
-
-Adjacent roles you could pivot into.
+Thesis direction: vision foundation models, pose estimation, VLMs.
 
 ```
-site:[YOUR_JOB_BOARD] "[YOUR_ADJACENT_TITLE_1]" [YOUR_KEY_SKILL] [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "[YOUR_ADJACENT_TITLE_2]" [YOUR_KEY_SKILL] [YOUR_CITY]
+site:linkedin.com/jobs "Computer Vision Engineer" Germany
+site:linkedin.com/jobs "Research Engineer" multimodal OR "vision-language" Europe
+site:linkedin.com/jobs "Machine Learning Engineer" "computer vision" Europe
+site:linkedin.com/jobs "Applied Scientist" "computer vision" Germany
+site:stepstone.de "Computer Vision" Engineer English
+site:naukri.com "Computer Vision Engineer" Bengaluru
 ```
 
-### Priority 4: Broader Technical / Consulting
+### Priority 1: Applied Research
 
-Wider net for general technical roles.
+Research-heavy teams in industry and research institutes.
 
 ```
-site:[YOUR_JOB_BOARD] [YOUR_KEY_SKILL] developer [YOUR_CITY]
-site:linkedin.com/jobs "[YOUR_KEY_SKILL] developer" [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "technical consultant" [YOUR_DOMAIN] [YOUR_CITY]
+site:amazon.jobs "Applied Scientist" Germany OR Luxembourg OR Berlin
+site:linkedin.com/jobs "Applied Scientist" NLP OR LLM Europe
+site:linkedin.com/jobs "Research Engineer" "machine learning" Germany
+site:linkedin.com/jobs "AI Research Engineer" Europe
+site:euraxess.ec.europa.eu "machine learning" research engineer
+site:jobs.dlr.de "Machine Learning" -Masterarbeit -Werkstudent
+site:jobs.fraunhofer.de "Machine Learning" OR "KI" Engineer English
+```
+
+### Priority 2: Adjacent roles
+
+Roles that fit the skill profile but use a different job title.
+
+```
+site:linkedin.com/jobs "AI Solutions Engineer" OR "ML Solutions Engineer" Europe
+site:linkedin.com/jobs "Forward Deployed Engineer" AI Europe
+site:linkedin.com/jobs "Machine Learning Engineer" "digital humanities" OR "cultural heritage"
+site:linkedin.com/jobs "Data Scientist" NLP Germany
+site:linkedin.com/jobs "ML Engineer" search OR retrieval Europe
+```
+
+### Priority 3: Top-paying company career pages (direct)
+
+```
+site:careers.google.com "Machine Learning" Zurich OR Munich OR Berlin OR London OR Bengaluru
+site:amazon.jobs "Machine Learning Engineer" OR "Applied Scientist" Berlin OR Aachen OR Munich OR Bengaluru
+site:metacareers.com "Machine Learning Engineer" London OR Zurich OR Paris
+site:jobs.apple.com "Machine Learning" Munich OR Zurich OR Cambridge OR Hyderabad
+site:careers.microsoft.com "Machine Learning" OR "Applied Scientist" Germany OR Dublin OR Hyderabad OR Bengaluru
+site:jobs.sap.com "AI Engineer" OR "Machine Learning Engineer" -Werkstudent -Intern
+site:jobs.bosch.com "Machine Learning" OR "Computer Vision" -Werkstudent -Thesis
+```
+
+### Priority 4: Broader net
+
+```
+site:linkedin.com/jobs "Machine Learning Engineer" "visa sponsorship" Europe
+site:relocate.me "Machine Learning"
+site:englishjobs.de "Machine Learning" OR "AI Engineer"
+site:linkedin.com/jobs "Python" "Machine Learning" Engineer remote Europe
+site:instahyre.com "Machine Learning Engineer"
 ```
 
 ## Location Filter
 
-When evaluating results, verify the job location is within reasonable commute distance from your home. Define acceptable areas:
-- [YOUR_CITY] and surrounding areas
-- [ACCEPTABLE_AREA_1]
-- [ACCEPTABLE_AREA_2]
-- [BORDERLINE_AREA] (borderline - ~X min by transit)
-- [TOO_FAR_AREA] (too far)
+The candidate is open to relocating anywhere. Use these tiers to **rank**, not to exclude:
+- **Ideal:** Germany (any city, including Rhine-Main / Marburg area), remote roles from Germany
+- **Acceptable:** rest of the EU/EEA, Switzerland, UK (subject to the permit/sponsorship check)
+- **Borderline (second priority):** India (Bengaluru, Hyderabad, Pune, Gurugram/NCR, Chennai, Mumbai, Kolkata)
+- **Flag for discussion:** outside Europe and India (US, Middle East, East Asia)
 
 ## Language Filter
 
-Your working languages and levels are in CLAUDE.md's Languages table. When filtering scraped results, apply `04-job-evaluation.md`'s Language Gate: a posting requiring a language you haven't declared at all is excluded; a posting requiring a higher level than you declared in a language you do work in is not excluded, flag it clearly instead (see `job-scraper/SKILL.md`'s Step 3 "Quick Fit Assessment" for how the flag surfaces in `/scrape` output). Postings simply *written* in a language you don't work in, that don't require it on the job, are fine.
+The candidate works in **English only** (German A2). Apply `04-job-evaluation.md`'s Language Gate together with its candidate-specific override: a posting that requires German above A2, or any other non-English language, as a job condition is **excluded**. Postings simply *written* in German for an English-working role are fine. "German is a plus" is fine.
 
 ## Date Filter
 
@@ -87,4 +132,5 @@ Only include jobs posted within the last 14 days, or with an application deadlin
 ## Adapting Queries
 
 If the user specifies a focus area, select queries from the matching category and also generate 2-3 custom queries for that focus. For example:
-- "/scrape [focus_area]" -> relevant category queries + custom focus-specific queries
+- "/scrape computer vision" -> Computer Vision / Multimodal queries + custom focus-specific queries
+- "/scrape india" -> India sites and city terms across all categories

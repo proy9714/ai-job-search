@@ -39,7 +39,84 @@ Keep answers to 1-2 minutes. Be specific. End with what you learned or would do 
 
 <!-- Add more STAR examples as needed. Aim for 4-6 covering different competencies. -->
 
+## STAR Candidates (Complete Manually)
+
+<!-- Added by /setup Path A from documents/ on 2026-11-02. Fill in S/T/A/R before using in interviews. -->
+
+### Texplicit: document summarisation replacing manual review
+**Source:** CV + CEO reference letter - Machine Learning Engineer, Sprinriver Technology
+**What happened:** Built the ML and API backend of an AI analytics tool that digests web and intranet documents, with multi-document summarisation and highlight extraction that replaced manual review.
+**Why it matters:** "Tell me about a production ML system you built", "impact on the business", "end-to-end ownership"
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
+
+### Enterprise RAG for organisational knowledge
+**Source:** CV - Machine Learning Engineer, Sprinriver Technology
+**What happened:** Built RAG applications (GPT-3.5 Turbo, LangChain, vector search) that let employees query company knowledge in natural language, plus modular LLM orchestration and evaluation pipelines.
+**Why it matters:** "LLM/GenAI experience", "how do you evaluate an LLM system", "reliability of GenAI apps"
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
+
+### Study Advisor: system architecture for a Text-to-SQL + RAG chatbot
+**Source:** Project report - Philipps-Universität Marburg (2025)
+**What happened:** Designed the multi-stage architecture (intent classification, query decomposition, Text-to-SQL, hybrid pgvector/pg_trgm retrieval in PostgreSQL, summarisation); RAGAS benchmark showed Gemini 2.5-Flash beating Llama 3.1-70B on faithfulness (0.65 vs 0.44).
+**Why it matters:** "System design", "a technical trade-off you made" (no separate vector DB), "working in a team"
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
+
+### NLS Voice Assistant: evaluation framework and failure analysis
+**Source:** CV (2026)
+**What happened:** Built an ASR + local LLM + TTS assistant in Docker Compose with a scenario-based evaluation framework (100% intent accuracy), then analysed ASR and temporal-reasoning failures.
+**Why it matters:** "How do you test ML systems", "debugging a failure", "attention to quality"
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
+
+### Emotion classifier: handling severe label imbalance
+**Source:** CV (2025)
+**What happened:** Applied MLSMOTE in BERT-embedding space to grow training samples from 2,768 to 4,724, reaching weighted F1 0.81 and anger recall 0.92.
+**Why it matters:** "A hard data problem", "imbalanced data", "how you improved a model"
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
+
+### GPT Researcher: contributing to a large open-source codebase
+**Source:** CV (2024)
+**What happened:** Shipped features and bug fixes to an open-source autonomous research agent through reviewed pull requests.
+**Why it matters:** "Working with an unfamiliar codebase", "taking feedback in code review", "agentic AI experience"
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
+
+### Learning a new domain fast: NLP to computer vision for art history
+**Source:** Thesis + Noli Me Tangere ISP + CEO reference ("swiftly comprehending new domains")
+**What happened:** Moved from NLP/RAG work into computer vision for historical paintings: reviewed about 80 papers, identified gaps (domain shift, missing human-human interaction modelling), and designed a pose-grounded scene-graph pipeline over a corpus of about 1,000 artworks.
+**Why it matters:** "Tell me about learning something new quickly", "research ability", "a problem with no obvious solution"
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
+
 ## Common Tough Questions
+
+### "Your reference letter says Software Engineer, but your CV says Machine Learning Engineer."
+> [PREPARE YOUR ANSWER - the CEO's letter (Dec 2023) lists the title as "Software Engineer" and also describes the role as "backend developer and ML engineer" on Texplicit, with "multiple generative AI solutions" delivered. Have a short, factual answer ready about what the official title was and what the day-to-day work was. Don't improvise this in the room.]
 
 ### "Why did you leave [previous company]?"
 > [PREPARE YOUR ANSWER - be honest, forward-looking, no negativity about former employer]

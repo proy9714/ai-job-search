@@ -1,0 +1,171 @@
+%% [YOUR_NAME] — Resume (ATS Optimised, 2 pages)
+%% Compile with: pdflatex <file>.tex  (see TEMPLATE.md for the full command)
+%%
+%% ── TAILORING GUIDE ──────────────────────────────────────────────────────────
+%% AI / GenAI Engineer     : prioritise RAG, Study Advisor, Voice Assistant, GPT Researcher.
+%% Computer Vision Engineer: prioritise Thesis, HandGX, Vision Transformers, Image Retrieval.
+%% NLP Engineer            : prioritise Summarisation, BERT, Transformers, Semantic Search.
+%% General ML Engineer     : prioritise Thesis, Study Advisor, Emotion Classification.
+%%
+%% LENGTH CONTROL — tuned to exactly 2 pages. If you add content, cut in this order:
+%% (1) "Earlier Projects", (2) the two weakest certifications, (3) the third bullet of
+%% each project.
+%%
+%% ATS RULES OBSERVED — keep these if you edit:
+%%   * standard section headings, all caps, one per line
+%%   * no tables, no multi-column layout, no text boxes, no images
+%%   * plain bullet lists only; dates right-aligned as plain text
+%%   * consistent date format: "Mon YYYY - Mon YYYY" or "YYYY - YYYY" (ASCII hyphen)
+%%   * spell acronyms out once, then abbreviate: e.g. Retrieval-Augmented Generation (RAG)
+%%   * consistent British spelling throughout
+%% ─────────────────────────────────────────────────────────────────────────────
+\documentclass[10pt,a4paper]{article}
+% ── Packages ──────────────────────────────────────────────────────────────────
+\usepackage[a4paper,top=1.25cm,bottom=1.15cm,left=1.5cm,right=1.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}      % scalable outline fonts (clean PDF text extraction for ATS)
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{needspace}   % keeps a sub-heading together with its list
+% ── Styling ───────────────────────────────────────────────────────────────────
+\definecolor{headerblue}{RGB}{31,119,180}
+\definecolor{darkgray}{RGB}{60,60,60}
+\hypersetup{
+    colorlinks  = true,
+    urlcolor    = headerblue,
+    pdftitle    = {[YOUR_NAME] - [HEADLINE_TITLE]},
+    pdfauthor   = {[YOUR_NAME]},
+    pdfsubject  = {Resume},
+    pdfkeywords = {[KEYWORD_1], [KEYWORD_2], [KEYWORD_3]}
+}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+% ── Section heading ───────────────────────────────────────────────────────────
+\renewcommand{\section}[1]{%
+  \par\vspace{7pt}%
+  \noindent{\large\bfseries\color{headerblue}#1}\par\vspace{2pt}%
+  \noindent\hrule\par\vspace{3pt}%
+}
+\setlist[itemize]{
+    leftmargin = *,
+    itemsep    = 1pt,
+    topsep     = 2pt,
+    parsep     = 0pt,
+    label      = \textbullet,
+}
+% ── Macros ────────────────────────────────────────────────────────────────────
+% \entry{Title}{Organisation / Location}{Date}
+\newcommand{\entry}[3]{%
+  \noindent\textbf{#1}\hfill\textit{\small #3}\\[0pt]%
+  {\small\textit{\color{darkgray}#2}}\par\vspace{2pt}%
+}
+% \project{Name}{Technologies}{Date}
+\newcommand{\project}[3]{%
+  \noindent\textbf{#1}\hfill\textit{\small #3}\\[0pt]%
+  {\small\textit{\color{darkgray}Technologies: #2}}\par\vspace{2pt}%
+}
+% \research{Title}{Institution}{Technologies}{Date}
+\newcommand{\research}[4]{%
+  \noindent\textbf{#1}\hfill\textit{\small #4}\\[0pt]%
+  {\small\textit{\color{darkgray}#2}}\\[1pt]%
+  {\small\textit{\color{darkgray}Technologies: #3}}\par\vspace{2pt}%
+}
+% \skill{Category}{Keywords} — plain text, no table, so parsers read it cleanly
+\newcommand{\skill}[2]{%
+  \noindent\textbf{#1:} #2\par\vspace{2pt}%
+}
+% \minorproject{Name}{Date}{Description}{Technologies}
+\newcommand{\minorproject}[4]{%
+  \item \textbf{#1} (#2): #3 \textit{#4}%
+}
+\newcommand{\vsm}{\vspace{5pt}}
+% ══════════════════════════════════════════════════════════════════════════════
+\begin{document}
+% ── Header ────────────────────────────────────────────────────────────────────
+\begin{center}
+{\LARGE\bfseries\color{headerblue} [YOUR_NAME_UPPERCASE]}\\[3pt]
+{\small\color{darkgray} [HEADLINE: Title \enspace|\enspace Keyword \enspace|\enspace Keyword \enspace|\enspace Keyword]}\\[5pt]
+\small
+[YOUR_PHONE] \enspace|\enspace
+\href{mailto:[YOUR_EMAIL]}{[YOUR_EMAIL]} \enspace|\enspace
+[YOUR_CITY, COUNTRY] \enspace|\enspace
+\href{[YOUR_LINKEDIN_URL]}{LinkedIn} \enspace|\enspace
+\href{[YOUR_GITHUB_URL]}{GitHub}
+\end{center}
+\vspace{1pt}
+% ── Summary ───────────────────────────────────────────────────────────────────
+\section{PROFESSIONAL SUMMARY}
+[Tailored profile statement, 4-6 lines. Bold the degree, institution and availability.]
+% ── Professional Experience ───────────────────────────────────────────────────
+\section{PROFESSIONAL EXPERIENCE}
+\entry{[Job Title]}
+{[Employer, City, Country]}
+{[Mon YYYY - Mon YYYY]}
+\begin{itemize}
+\item {[Experience bullet 1]}
+\item {[Experience bullet 2]}
+\item {[Experience bullet 3]}
+\end{itemize}
+% ── Research Experience ───────────────────────────────────────────────────────
+\section{RESEARCH EXPERIENCE}
+\research
+{[Research title]}
+{[Institution, Country]}
+{[Technology 1, Technology 2]}
+{[YYYY - Present]}
+\begin{itemize}
+\item {[Research bullet 1]}
+\item {[Research bullet 2]}
+\end{itemize}
+% ── Projects ──────────────────────────────────────────────────────────────────
+\section{PROJECTS}
+\project{[Project name]}
+{[Technology 1, Technology 2]}
+{[YYYY]}
+\begin{itemize}
+\item {[Project bullet 1]}
+\item {[Project bullet 2]}
+\item {[Project bullet 3]}
+\end{itemize}
+\vsm
+\needspace{4\baselineskip}
+\noindent\textbf{Earlier Projects}\par\vspace{2pt}
+\begin{itemize}
+\minorproject{[Project name]}{[YYYY]}
+{[One-sentence description.]}
+{[Technologies]}
+\end{itemize}
+% ── Open Source Contributions ────────────────────────────────────────────────
+\section{OPEN SOURCE CONTRIBUTIONS}
+\entry
+{[Project (Role)]}
+{\href{[PROJECT_URL]}{[project url]}}
+{[YYYY]}
+\begin{itemize}
+\item {[Contribution bullet 1]}
+\end{itemize}
+% ── Technical Skills ──────────────────────────────────────────────────────────
+\section{TECHNICAL SKILLS}
+\skill{[Category 1]}{[Keyword, Keyword, Keyword]}
+\skill{[Category 2]}{[Keyword, Keyword, Keyword]}
+% ── Certifications ───────────────────────────────────────────────────────────
+\section{CERTIFICATIONS}
+\begin{itemize}
+\item {[Certification -- Issuer]}
+\end{itemize}
+% ── Education ────────────────────────────────────────────────────────────────
+\section{EDUCATION}
+\entry
+{[Degree]}
+{[Institution, Country]}
+{[YYYY - YYYY or YYYY - Present]}
+% ── Languages ────────────────────────────────────────────────────────────────
+\section{LANGUAGES}
+\begin{itemize}
+\item {[Language (Level)]}
+\end{itemize}
+\end{document}

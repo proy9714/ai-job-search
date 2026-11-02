@@ -1,8 +1,7 @@
-%% Example CV - [YOUR_NAME]
+%% Master CV - Priyadarshi Roy
 %% Comprehensive overview of all competencies, experience, and achievements.
 %% Use as a master reference when tailoring role-specific CVs.
 %%
-%% SETUP: Run /setup to populate this with your actual information.
 %% Compile with: lualatex main_example.tex
 %% (pdflatex often fails on modern MiKTeX with fontawesome5 font-expansion errors.)
 
@@ -40,7 +39,7 @@
     linkcolor=blue,
     filecolor=magenta,
     urlcolor=blue,
-    pdftitle={[YOUR_NAME] - CV},
+    pdftitle={Priyadarshi Roy - CV},
     % Keep pdfpagemode=UseNone: this block runs after moderncv's own
     % \AtEndPreamble (moderncv.cls sets pdfpagemode there), so a FullScreen
     % value here would win and open every CV in fullscreen presentation mode.
@@ -48,15 +47,14 @@
 }}
 \usepackage[scale=0.80]{geometry}
 \usepackage{import}
+\usepackage{needspace}
 
 % personal data
-\name{[First]}{[Last]}
-% If you have no address to list, DELETE this whole line. \address{}{}{} fails
-% with "There's no line here to end" on every moderncv version.
-\address{[Your Address, City, Country]}{}{}
-\phone[mobile]{[+XX XXXXXXXXXX]}
-\email{[your.email@example.com]}
-\extrainfo{\href{[https://linkedin.com/in/your-profile]}{LinkedIn}, \href{[https://github.com/your-username]}{GitHub}}
+\name{Priyadarshi}{Roy}
+\address{Cölbe, Germany}{}{}
+\phone[mobile]{+49 1521 7847618}
+\email{proy9714@gmail.com}
+\extrainfo{\href{https://www.linkedin.com/in/priyadarshi-roy/}{linkedin.com/in/priyadarshi-roy}, \href{https://github.com/proy9714}{github.com/proy9714}}
 
 \begin{document}
 
@@ -67,7 +65,7 @@
 % ============================================================
 
 \vspace{6pt}
-\small{[Write a 3-5 line profile statement tailored to the role you're applying for. Focus on what makes you uniquely qualified. Example: "Data scientist with a PhD in [field] and X years of industry experience. Combines deep domain expertise in [domain] with strong applied machine learning and Python development skills. Experienced in developing end-to-end ML pipelines, from data ingestion to stakeholder-facing dashboards."]}
+\small{Machine Learning Engineer with 3 years of industry experience building production NLP and Generative AI systems, including enterprise Retrieval-Augmented Generation (RAG) applications, LLM orchestration and evaluation pipelines, and Python REST APIs serving models in production. MSc Data Science student at Philipps-Universität Marburg (thesis in multimodal computer vision, submission November 2026), available immediately.}
 
 % ============================================================
 %     CORE COMPETENCIES
@@ -77,15 +75,15 @@
 \vspace{1pt}
 \begin{itemize}
 
-\item \textbf{[Skill Category 1]}: [Specific skills, frameworks, tools. Be concrete.]
+\item \textbf{LLMs and Generative AI}: Retrieval-Augmented Generation (RAG), LangChain, prompt engineering, semantic and hybrid search, Text-to-SQL, agentic workflows, LLM evaluation with RAGAS.
 
-\item \textbf{[Skill Category 2]}: [Specific skills, frameworks, tools.]
+\item \textbf{Machine Learning and NLP}: Python, PyTorch, Hugging Face Transformers, BERT, TensorFlow, Keras, Scikit-Learn; document summarisation, text classification, imbalanced learning.
 
-\item \textbf{[Skill Category 3]}: [Specific skills, frameworks, tools.]
+\item \textbf{Computer Vision and Multimodal AI}: Vision Transformers, vision-language models, human pose estimation, object detection, image retrieval, OpenCV, ASR/TTS.
 
-\item \textbf{[Skill Category 4]}: [Domain expertise, methods, approaches.]
+\item \textbf{Backend and MLOps}: FastAPI, Flask, REST APIs, Docker, Docker Compose, Git, Linux, Ollama.
 
-\item \textbf{[Skill Category 5]}: [Tools, platforms, software.]
+\item \textbf{Data Engineering}: PostgreSQL, pgvector, MongoDB, MySQL, Apache Spark, Pandas, SQL, Java, C++, JavaScript.
 
 \end{itemize}
 
@@ -97,33 +95,84 @@
 \vspace{3pt}
 \begin{itemize}
 
-% --- Most Recent Role ---
-\item{\cventry{[YYYY-Present]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\item{\cventry{Aug 2021 - Aug 2024}{Machine Learning Engineer}{Sprinriver Technology Private Limited}{Kolkata, India}{}{\vspace{1pt}
 \begin{itemize}
-    \item {[Achievement or responsibility 1 - be specific, use numbers where possible]}
-    \item {[Achievement or responsibility 2]}
-    \item {[Achievement or responsibility 3]}
-    \item {[Achievement or responsibility 4]}
+    \item Developed production NLP systems for automated document understanding, including multi-document summarisation and highlight extraction pipelines that replaced manual review of large document collections.
+    \item Built enterprise Retrieval-Augmented Generation (RAG) applications using GPT-3.5 Turbo, embedding-based retrieval, LangChain and vector search, enabling employees to query organisational knowledge in natural language.
+    \item Designed modular LLM orchestration workflows and evaluation pipelines, improving the reliability, maintainability and scalability of Generative AI applications.
+    \item Developed and deployed Python REST APIs with Flask to serve machine learning models in production, supporting AI-powered features across business applications.
+\end{itemize}}}
+
+\end{itemize}
+
+% ============================================================
+%     RESEARCH EXPERIENCE
+% ============================================================
+
+\section{Research Experience}
+\vspace{3pt}
+\begin{itemize}
+
+\item{\cventry{2026-present}{Master's Thesis: Computer Vision for Historical Art Analysis}{Philipps-Universität Marburg}{Germany}{}{\vspace{1pt}
+\begin{itemize}
+    \item Developing multimodal pipelines that combine vision foundation models, human pose estimation, object detection, image embeddings and geometric verification to analyse human figures and interactions in historical paintings.
+    \item Investigating domain shift from natural images to artistic media, including scene graph generation and knowledge-based retrieval.
 \end{itemize}}}
 
 \vspace{3pt}
 
-% --- Previous Role ---
-\item{\cventry{[YYYY-YYYY]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\needspace{5\baselineskip}
+\item{\cventry{2026}{Independent Scientific Project: ``Noli Me Tangere''}{Philipps-Universität Marburg}{Germany}{}{\vspace{1pt}
 \begin{itemize}
-    \item {[Achievement or responsibility 1]}
-    \item {[Achievement or responsibility 2]}
-    \item {[Achievement or responsibility 3]}
+    \item Designed a pose-grounded human-human interaction scene-graph pipeline (Grounding DINO detection, pose embeddings, vision-language-model reasoning) and assembled a corpus of about 1,000 artworks from ART Research Network, JSTOR and Prometheus.
+\end{itemize}}}
+
+\end{itemize}
+
+% ============================================================
+%     PROJECTS
+% ============================================================
+
+\needspace{8\baselineskip}
+\section{Projects}
+\vspace{3pt}
+\begin{itemize}
+
+\needspace{5\baselineskip}
+\item{\cventry{2025}{Python, FastAPI, LangChain, PostgreSQL, pgvector, Vue.js}{Study Advisor (RAG-Based Chatbot)}{}{}{\vspace{1pt}
+\begin{itemize}
+    \item Architected a multi-stage RAG pipeline for academic advising with intent classification, query decomposition, Text-to-SQL, semantic retrieval, context summarisation and LLM response generation.
+    \item Implemented hybrid retrieval inside PostgreSQL using pgvector (semantic search) and pg\_trgm (fuzzy matching), removing the need for a separate vector database.
+    \item Benchmarked Llama 3.1-70B against Gemini 2.5-Flash with RAGAS over 75 questions; Gemini led on faithfulness (0.65 vs.\ 0.44) and answer correctness (0.57 vs.\ 0.47).
 \end{itemize}}}
 
 \vspace{3pt}
 
-% --- Earlier Role ---
-\item{\cventry{[YYYY-YYYY]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\needspace{5\baselineskip}
+\item{\cventry{2026}{Python, Faster-Whisper, Ollama, Docker Compose}{NLS Voice Assistant}{}{}{\vspace{1pt}
 \begin{itemize}
-    \item {[Achievement or responsibility 1]}
-    \item {[Achievement or responsibility 2]}
+    \item Built a voice assistant (speech recognition, local LLM orchestration, text-to-speech) for weather and multi-turn calendar tasks, with a scenario-based evaluation framework reaching 100\% intent accuracy.
 \end{itemize}}}
+
+\vspace{3pt}
+
+\needspace{5\baselineskip}
+\item{\cventry{2025}{Python, PyTorch, Hugging Face Transformers, Scikit-Learn}{Multi-Label Emotion Classification}{}{}{\vspace{1pt}
+\begin{itemize}
+    \item Applied MLSMOTE in BERT-embedding space to address severe label imbalance (2,768 to 4,724 training samples across 28 label combinations), reaching a weighted F1 of 0.81.
+\end{itemize}}}
+
+\vspace{3pt}
+
+\needspace{5\baselineskip}
+\item{\cventry{2024}{\href{https://github.com/assafelovic/gpt-researcher}{github.com/assafelovic/gpt-researcher}}{Open Source: GPT Researcher (Contributor)}{}{}{\vspace{1pt}
+\begin{itemize}
+    \item Contributed features, bug fixes and code improvements to an open-source autonomous research agent (LLM orchestration, RAG, web retrieval) through reviewed pull requests.
+\end{itemize}}}
+
+\vspace{3pt}
+
+\item \textbf{Earlier projects}: Distributed inclusion-dependency discovery (2024; Java, Akka, Spark); NLP models for fake news classification (2021; TensorFlow, Keras); CNN hand-gesture recognition (2019; OpenCV).
 
 \end{itemize}
 
@@ -135,16 +184,33 @@
 \vspace{1pt}
 \begin{itemize}
 
-\item{\cventry{[YYYY-YYYY]}{[Degree] in [Field]}{[Institution]}{[City, Country]}{}{\vspace{1pt}
-Thesis: ``[Thesis Title].'' [Brief description of research focus.]
+\needspace{4\baselineskip}
+\item{\cventry{2024-present}{MSc Data Science}{Philipps-Universität Marburg}{Germany}{}{\vspace{1pt}
+In progress, thesis submission November 2026. Computer Vision, Natural Language Systems, ML with Graphs.
 }}
 
 \vspace{3pt}
 
-\item{\cventry{[YYYY-YYYY]}{[Degree] in [Field]}{[Institution]}{[City, Country]}{}{\vspace{1pt}
-[Brief description or key topics.]
+\item{\cventry{2019-2021}{MSc Computer Science}{St. Xavier's College (Autonomous)}{Kolkata, India}{}{\vspace{1pt}
+CGPA 8.17/10, First Class.
 }}
 
+\vspace{3pt}
+
+\item{\cventry{2016-2019}{BSc Computer Science}{St. Xavier's College (Autonomous)}{Kolkata, India}{}{\vspace{1pt}
+CGPA 7.99/10, First Class.
+}}
+
+\end{itemize}
+
+% ============================================================
+%     CERTIFICATIONS
+% ============================================================
+
+\section{Certifications}
+\vspace{1pt}
+\begin{itemize}
+\item {LangChain for LLM Application Development; LangChain: Chat with Your Data (DeepLearning.AI); NLP with Classification and Vector Spaces; Build Basic GANs (Coursera); Python and Computer Vision Bootcamp (ShapeAI).}
 \end{itemize}
 
 % ============================================================
@@ -154,27 +220,7 @@ Thesis: ``[Thesis Title].'' [Brief description of research focus.]
 \section{Languages}
 \vspace{1pt}
 \begin{itemize}
-\item {[Language 1] (native), [Language 2] (fluent), [Language 3] (intermediate).}
-\end{itemize}
-
-% ============================================================
-%     PUBLICATIONS (optional)
-% ============================================================
-
-\section{Publications}
-\vspace{1pt}
-\begin{itemize}
-\item {[Author(s)] ([Year]). [Title]. [Journal/Conference]. \href{[DOI_URL]}{DOI link}}
-\end{itemize}
-
-% ============================================================
-%     HONORS AND AWARDS (optional)
-% ============================================================
-
-\section{Honors and Awards}
-\vspace{1pt}
-\begin{itemize}
-\item{\textbf{[Award Name]} -- [Event/Organization] ([Year]).}
+\item {English (C2), Bengali (native), Hindi (C2), Japanese (JLPT N3), German (A2).}
 \end{itemize}
 
 % ============================================================

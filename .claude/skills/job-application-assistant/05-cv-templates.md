@@ -4,6 +4,21 @@ framework_version: 1.4.8
 
 # CV Templates and Tailoring Guide
 
+<!-- BEGIN ACTIVE-TEMPLATE (managed by /add-template - do not edit by hand) -->
+> **Active template override: `resume-ats`**
+>
+> A custom template is active. Where this block conflicts with the stock guidance below, this block wins. Structural advice below (tailoring, page-budget, cutting rules) still applies.
+>
+> - **Template skeleton:** `templates/cv/resume-ats/template.tex` — use this as the structural reference instead of the stock template
+> - **Manifest:** `templates/cv/resume-ats/TEMPLATE.md` — read this for style rules and known pitfalls before drafting
+> - **Source extension:** `.tex`
+> - **Compile command:** `cd cv && rm -f <file>.pdf && mkdir -p build && pdflatex -interaction=nonstopmode -output-directory=build <file>.tex && mv build/<file>.pdf ./` (not the lualatex command named in the stock guidance below — `/apply`'s compile step must use this instead). Run it from the output directory. It redirects to `build/`, the log is in `build/`, and `/apply`'s Step 5e cleanup must delete that `build/` folder too
+> - **Fonts:** Latin Modern (lmodern, standard TeX distribution font; no bundled files)
+> - **Page limit:** exactly 2 page(s)
+> - **Output file:** `cv/main_<company>_<role>.tex`; no class/package/font files need copying (article class, standard packages)
+> - **User rule:** the candidate wants **every CV generated in exactly this format**. Never fall back to moderncv, and ignore the moderncv preamble, `\cventry` and `\needspace` advice below.
+<!-- END ACTIVE-TEMPLATE -->
+
 <!-- SETUP: Profile statements and section ordering are personalized by running /setup -->
 
 ## Template: LaTeX moderncv (Banking Style)
@@ -59,7 +74,7 @@ Expected output: `Output written on main_<company>_<role>.pdf (2 pages, ...)`. A
     linkcolor=blue,
     filecolor=magenta,
     urlcolor=blue,
-    pdftitle={[YOUR_NAME] - CV},
+    pdftitle={Priyadarshi Roy - CV},
     % Keep pdfpagemode=UseNone: this block runs after moderncv's own
     % \AtEndPreamble (moderncv.cls sets pdfpagemode there), so a FullScreen
     % value here would win and open every CV in fullscreen presentation mode.
@@ -69,13 +84,13 @@ Expected output: `Output written on main_<company>_<role>.pdf (2 pages, ...)`. A
 \usepackage{import}
 
 % Personal data
-\name{[FIRST_NAME]}{[LAST_NAME]}
+\name{Priyadarshi}{Roy}
 % If you have no address to list, DELETE this whole line. \address{}{}{} fails
 % with "There's no line here to end" on every moderncv version.
-\address{[YOUR_ADDRESS]}{}{}
-\phone[mobile]{[YOUR_PHONE]}
-\email{[YOUR_EMAIL]}
-\extrainfo{\href{[YOUR_LINKEDIN_URL]}{LinkedIn}, \href{[YOUR_GITHUB_URL]}{GitHub}}
+\address{Cölbe, Germany}{}{}
+\phone[mobile]{+49 1521 7847618}
+\email{proy9714@gmail.com}
+\extrainfo{\href{https://www.linkedin.com/in/priyadarshi-roy/}{linkedin.com/in/priyadarshi-roy}, \href{https://github.com/proy9714}{github.com/proy9714}}
 
 \begin{document}
 \makecvtitle
@@ -137,11 +152,18 @@ When the role sits outside your home domain, **lead with the domain-transfer arg
 **Create 2-3 profile statement templates for your main role types:**
 
 <!-- SETUP: These are populated based on your background -->
-**For [YOUR_PRIMARY_ROLE_TYPE] roles:**
-> [YOUR_PROFILE_STATEMENT_TEMPLATE_1]
+**CV language:** always English. **Education entry for the MSc must read** `2024-present` with "In progress, thesis submission November 2026." Keep it consistent with the profile statement.
 
-**For [YOUR_SECONDARY_ROLE_TYPE] roles:**
-> [YOUR_PROFILE_STATEMENT_TEMPLATE_2]
+**For ML / AI / LLM / GenAI Engineer roles (LLM/RAG direction):**
+> Machine Learning Engineer with 3 years of industry experience building production NLP and Generative AI systems, including enterprise Retrieval-Augmented Generation (RAG) applications, LLM orchestration and evaluation pipelines, and Python REST APIs serving models in production. Currently completing an MSc in Data Science at Philipps-Universität Marburg (thesis submission November 2026), where I designed a Text-to-SQL and hybrid-search RAG system benchmarked with RAGAS. Available immediately for a full-time role.
+
+**For Computer Vision / Multimodal / Research Engineer roles (CV direction):**
+> Machine Learning Engineer moving production ML experience into multimodal computer vision. My MSc thesis at Philipps-Universität Marburg (submission November 2026) applies vision foundation models, human pose estimation, object detection and vision-language models to historical paintings, tackling domain shift from photographs to artistic media. This builds on 3 years of industry experience deploying NLP and Generative AI systems in Python and PyTorch, so I bring research depth together with the engineering to ship it.
+
+**For Applied Scientist / Research roles (research direction):**
+> Applied ML practitioner who pairs research with evaluation-driven engineering. Designed a pose-grounded scene-graph pipeline for computational art analysis (independent research project, about 1,000-artwork corpus) and benchmarked LLMs with RAGAS before choosing between them, on top of 3 years building production NLP and RAG systems in industry. MSc Data Science, Philipps-Universität Marburg (thesis submission November 2026).
+
+*All three are phrasing references. Before reuse, check every claim against `01-candidate-profile.md`. The research project is a proposal and design, so do not describe it as an evaluated system.*
 
 Statements labeled *[Used for: <company>_<role>]* were extracted from archived application drafts by `/setup` Path A. They are **phrasing references, never fact sources**: when drafting from one, every factual claim still comes from `01-candidate-profile.md` - a past tailored draft does not vouch for its own accuracy.
 

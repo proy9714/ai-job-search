@@ -30,6 +30,16 @@ If the candidate's permit also constrains *hours* or *start date* (a student vis
 
 A role that fails this gate is not scored and not drafted. Everything below applies only to roles that pass it.
 
+### Candidate-specific eligibility (set by /setup, 2026-11-02)
+
+- **Citizenship:** Indian citizen. Indian roles have no work-authorization barrier.
+- **Germany / EU:** currently on a **German student residence permit that expires March 2027**. After that the candidate has no valid work or residence permit, so any full-time role in Germany or elsewhere in Europe needs the employer to support a new permit (e.g. EU Blue Card, national work visa, or relocation/visa sponsorship).
+  - **FAIL:** postings restricted to EU/EEA citizens, requiring an existing unrestricted work permit ("must already have the right to work in X", "no sponsorship available"), or requiring security clearance.
+  - **PASS (positive signal):** "visa sponsorship", "relocation support", "Blue Card", "international applicants welcome".
+  - **Silent:** proceed but mark **sponsorship unverified**. Large tech employers (Google, Amazon, Meta, Apple, Microsoft, etc.) routinely sponsor; smaller German Mittelstand firms often do not. Check before drafting.
+- **Timing gate:** a start date before graduation is fine (the candidate is available immediately). If a start date falls after March 2027, flag that a new permit must be in place by then.
+- **Contract type gate:** only **full-time, permanent** roles. Internships, working-student, thesis, part-time, freelance and fixed-term-only contracts are a **FAIL**.
+
 ## Language Gate — run before scoring
 
 This gate checks a posting's language requirements against what the candidate actually speaks. It is not one of the five Scoring Dimensions below - it runs before them, structured the same way as the Eligibility Gate above: read the posting, classify against profile data, and treat a hard mismatch as FAIL before scoring. Its verdict is tracked downstream: `/rank` records the result as `language_gate` (PASS/FAIL/FLAG) with a supporting `language_note`, persists both into `seen_jobs.json`, and treats a FAIL as a shortlist veto; `/scrape` surfaces the flag in its results table and carries a language-override rule for postings whose ad language differs from the role's working language. `/apply`'s language detection (Step 1, which extracts a posting's required language generically) feeds this same check.
@@ -46,6 +56,13 @@ Judge the level comparison the same way you judge everything else in this framew
 
 **Worked example:** a candidate whose Languages table lists Spanish (Native) and English (B1/B2). A posting requiring "fluent Russian" → **FAIL**, Russian isn't declared at all. A posting requiring "fluent English" → **FLAG**, English is declared but "fluent" plausibly exceeds B1/B2 — score and draft the application, but tell the candidate this posting's bar may be a stretch and let them decide. A posting requiring "conversational English" or unspecified English → **PASS**, B1/B2 clears a "conversational" bar cleanly.
 
+### Candidate-specific language rule (set by /setup, 2026-11-02 - overrides the FLAG row above)
+
+The candidate works **in English only**. Stricter than the default gate:
+- A posting that requires **German above A2** as a job condition ("fluent", "business-level", "B1+", "C1", "verhandlungssicher", "fließend") is a **FAIL**, not a FLAG.
+- A posting that requires **any language other than English** as a job condition is a **FAIL**, even though Bengali/Hindi/Japanese appear on the CV.
+- "German is a plus" / "nice to have" is a PASS. A posting merely *written* in German for an English-working role is a PASS.
+
 ## Scoring Dimensions
 
 Evaluate each job posting against these five dimensions:
@@ -60,9 +77,9 @@ How well do the required/preferred skills align with the candidate's capabilitie
 | 40-59 | Partial match, significant upskilling needed |
 | 0-39 | Fundamental mismatch |
 
-**Strong match areas:** [YOUR_PRIMARY_SKILLS]
-**Moderate match areas:** [YOUR_SECONDARY_SKILLS]
-**Weak match areas:** [SKILLS_YOU_LACK]
+**Strong match areas:** Python; LLM application engineering (RAG, LangChain, prompt engineering, semantic search, Text-to-SQL, agentic workflows); LLM evaluation (RAGAS, custom evaluation frameworks); NLP (document summarisation, text classification, BERT/Hugging Face Transformers); PyTorch; serving models via REST APIs (FastAPI, Flask); PostgreSQL/pgvector
+**Moderate match areas:** Computer vision (Vision Transformers, pose estimation, object detection, image retrieval, VLMs - thesis level, not yet industry); speech (ASR/TTS); Docker/Docker Compose; TensorFlow/Keras; Spark/distributed data processing; Java; web stacks (Angular, Node.js, Vue.js)
+**Weak match areas:** Cloud platforms (AWS/GCP/Azure - none listed); Kubernetes and production MLOps tooling (MLflow, Kubeflow, Airflow, CI/CD for ML); LLM fine-tuning/pre-training at scale and distributed GPU training; reinforcement learning and robotics; C++ performance engineering; formal publications (none yet, which matters for research-scientist roles); German above A2
 
 ### 2. Experience Match (0-100)
 Does work history align with what they're looking for? Match on the function and nature of the work performed, not the literal job title - a "Data Consultant" and a "Data Scientist" role can be functionally identical.
@@ -74,9 +91,9 @@ Does work history align with what they're looking for? Match on the function and
 | 40-59 | Adjacent experience, would need to make the case |
 | 0-39 | Unrelated experience |
 
-**Strong:** [YOUR_DIRECT_EXPERIENCE_DOMAINS]
-**Moderate:** [YOUR_ADJACENT_EXPERIENCE]
-**Entry-level:** [ROLES_WITH_LIMITED_EXPERIENCE]
+**Strong:** ML Engineer / AI Engineer / NLP Engineer / GenAI-LLM Engineer roles building RAG, document understanding and LLM applications (3 years industry, Sprinriver 2021-2024)
+**Moderate:** Applied Scientist, Research Engineer (multimodal / computer vision), Data Scientist (GenAI), AI Solutions Engineer - transferable via the MSc, thesis and projects but not industry-proven in that exact function
+**Entry-level:** Pure computer vision engineering in industry, research scientist roles needing publications or a PhD, and senior/staff roles asking for 5+ years. Treat "senior" postings with 5+ years required as a stretch (40-59 range).
 
 ### 3. Behavioral/Culture Fit (0-100)
 Does the role and company culture match the behavioral profile?
@@ -91,10 +108,17 @@ Does the role and company culture match the behavioral profile?
 **Red flags to research:** Department disorganization, work dominated by maintenance over development, poor chemistry with leadership, culture mismatches. Check reviews, media coverage, LinkedIn connections, and network contacts for insider perspective.
 
 ### 4. Location & Logistics (Pass/Fail + Notes)
-- Within commute range: PASS
-- Remote with occasional office: PASS
-- Requires relocation: FAIL (deal-breaker)
+The candidate is **open to relocating anywhere**. Priority: **Europe first, India second.**
+- Anywhere in Germany or elsewhere in Europe: PASS (subject to the Eligibility Gate / sponsorship check)
+- Anywhere in India: PASS (second priority, no permit barrier)
+- Remote / hybrid: PASS (plus)
+- Relocation: PASS, not a deal-breaker. Relocation support is a plus.
+- Other regions (US, Asia ex-India, etc.): FLAG (discuss with user)
 - Frequent international travel: FLAG (discuss with user)
+
+**Salary floor (hard filter when salary is stated):**
+- Europe: minimum **EUR 60,000 gross per year**. A stated range topping out below this is a FAIL. If no salary is stated, proceed and note "salary unverified"; the salary benchmark below can help.
+- India: minimum **INR 15 lakh per year (INR 15,00,000 CTC)**.
 
 ### 5. Career Alignment & Motivation (0-100)
 Does this role advance career goals and contain tasks that energize?
@@ -107,19 +131,21 @@ Does this role advance career goals and contain tasks that energize?
 | 0-39 | Dead end or backwards step |
 
 **Career goals:**
-- [YOUR_CAREER_GOAL_1]
-- [YOUR_CAREER_GOAL_2]
-- [YOUR_CAREER_GOAL_3]
+- Land a **full-time, permanent** role starting right after the MSc (thesis submission November 2026), ideally in Europe with visa/Blue Card support before the student permit expires in March 2027
+- Grow across all three directions, weighted equally: **LLM/RAG and GenAI engineering**, **computer vision and multimodal AI** (thesis direction), and **applied research** (research-heavy teams, industrial research labs)
+- Join **top-paying employers** where possible (Google, Amazon, Meta, Apple, Microsoft and comparable top-tier tech/AI employers in Europe and India)
 
 **Motivation filter:** Evaluate not just whether you *can* do the tasks, but whether the tasks will *energize* you. Consider:
-- Tasks that energize: [YOUR_ENERGIZING_TASKS]
-- Tasks that drain: [YOUR_DRAINING_TASKS]
-- Non-task factors: leadership style, department culture, company values, degree of autonomy
+- Tasks that energize: research-heavy work, implementing new ideas, prototyping and evaluating new models and architectures, making evidence-based technical choices
+- Tasks that drain: repetitive "same path every time" work, maintenance-dominated roles, hectic schedules and chronic overtime
+- Non-task factors: **work-life balance is the #1 factor** - weight culture signals about overtime, on-call and deadline pressure heavily. Also: a considerate, respectful manager who plans realistic timelines, and autonomy to explore
 
 **Life situation alignment:** Consider personal constraints:
-- **Security**: [YOUR_FINANCIAL_SITUATION_CONTEXT]
-- **Flexibility**: [YOUR_SCHEDULE_CONSTRAINTS]
-- **Professional development**: [YOUR_GROWTH_PRIORITIES]
+- **Security**: needs a full-time permanent contract and permit support; student permit expires March 2027. Roles that sponsor visas score higher on alignment.
+- **Flexibility**: fully mobile (open to relocating anywhere; Europe first, India second); no family or commute constraints recorded
+- **Professional development**: deepen computer vision / multimodal skills alongside LLM engineering; exposure to research; closing gaps in cloud and production MLOps
+
+**Hard deal-breakers (FAIL regardless of score):** not full-time permanent; German required above A2 or any non-English working language; salary below the floor in section 4; no possible permit route for a Europe role; signals of chronically poor work-life balance (explicit long-hours culture, routine weekend work) - flag these strongly even when not explicit.
 
 ### 6. Salary Benchmark (Optional)
 
@@ -248,6 +274,10 @@ consumer benefits.
 - **Moderate Fit** (45-59): Consider carefully, discuss with user
 - **Weak Fit** (30-44): Probably skip unless strategic reasons
 - **Poor Fit** (<30): Skip
+
+## Calibration from Past Applications
+
+`documents/applications/Job Applications.xlsx` (read by /setup on 2026-11-02) lists 28 applications from Dec 2025 to Apr 2026: thesis, internship and working-student roles at DLR, Fraunhofer, Bosch, BMW, SAP, Zeiss, Google, Amazon, Apple, Allianz, Qualcomm, CARIAD/VW and others. The sheet records **no outcomes**, so it provides no fit signal. It also predates the switch to full-time-only roles. Record outcomes with `/outcome` going forward to build calibration.
 
 ## Pre-Application: Call the Employer (Best Practice)
 

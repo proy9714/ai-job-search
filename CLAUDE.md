@@ -1,10 +1,7 @@
-# Job Application Assistant for [YOUR_NAME]
-
-<!-- SETUP: This file is populated by running /setup -->
-<!-- After running /setup, all [PLACEHOLDER] tokens will be replaced with your actual information -->
+# Job Application Assistant for Priyadarshi Roy
 
 ## Role
-This repo is a job application workspace. Claude acts as a career advisor and application assistant for [YOUR_NAME], helping with:
+This repo is a job application workspace. Claude acts as a career advisor and application assistant for Priyadarshi Roy, helping with:
 1. **Job fit evaluation** - Assess job postings against your profile (skills, experience, behavioral traits)
 2. **CV tailoring** - Adapt existing CV templates (LaTeX/moderncv) to target specific roles
 3. **Cover letter writing** - Draft targeted cover letters using existing templates (LaTeX)
@@ -13,79 +10,84 @@ This repo is a job application workspace. Claude acts as a career advisor and ap
 
 ## Candidate Profile
 
-<!-- This section is auto-populated by /setup. You can also fill it in manually. -->
+<!-- Populated by /setup on 2026-11-02. Full detail: .claude/skills/job-application-assistant/01-candidate-profile.md -->
 
 ### Identity
-- **Name:** [YOUR_NAME]
-- **Location:** [YOUR_CITY], [YOUR_COUNTRY] ([YOUR_COMMUTE_CONSTRAINTS])
+- **Name:** Priyadarshi Roy
+- **Location:** Cölbe (near Marburg), Germany (open to relocating anywhere; Europe first, India second)
+- **Contact:** +49 1521 7847618 | proy9714@gmail.com | https://www.linkedin.com/in/priyadarshi-roy/ | https://github.com/proy9714
 - **Languages:**
   | Language | Level |
   |----------|-------|
-  | [LANGUAGE] | [LEVEL] |
-  <!-- Every language you work in professionally, with your level (CEFR, "native," "professional
-  working proficiency," whatever your CV/LinkedIn use - no need to force it into one scale). An
-  undeclared language is a hard deal-breaker if a posting requires it; a declared language at a
-  lower level than a posting wants is flagged for your own judgment, not auto-rejected. See
-  04-job-evaluation.md's Language Gate. -->
-- **CV language:** [YOUR_CV_LANGUAGE] <!-- English unless your market expects otherwise; /setup asks -->
+  | English | C2 |
+  | Bengali | Native |
+  | Hindi | C2 |
+  | Japanese | JLPT N3 |
+  | German | A2 |
+  <!-- Candidate works in ENGLISH ONLY. Any posting requiring German above A2, or any other
+  non-English working language, is a FAIL (stricter than the default FLAG). See 04-job-evaluation.md. -->
+- **CV language:** English
 
-- **Status:** [YOUR_EMPLOYMENT_STATUS]
-- **LinkedIn headline:** "[YOUR_LINKEDIN_HEADLINE]"
+- **Status:** MSc Data Science student at Philipps-Universität Marburg, thesis submission November 2026; available immediately for full-time work. German student residence permit expires March 2027, so Europe roles need visa/permit support (e.g. EU Blue Card). Indian citizen.
+- **LinkedIn headline:** "Machine Learning Engineer | NLP | Generative AI | Computer Vision"
 
 ### Education
-<!-- List your degrees, most recent first -->
-- **[DEGREE_LEVEL] in [FIELD]** ([YEAR_START]-[YEAR_END]) - [INSTITUTION]
-  - Thesis: "[THESIS_TITLE]"
-  - Topics: [KEY_TOPICS]
+- **MSc Data Science** (2024-present, thesis submission November 2026) - Philipps-Universität Marburg, Germany
+  - Thesis: "Computer Vision for Historical Art Analysis" (in progress)
+  - Topics: Computer Vision, Natural Language Systems, NLP, Machine Learning with Graphs, Data Integration, Matrix Methods. Current average 10.21/15, 81 ECTS (July 2026)
+- **MSc Computer Science** (2019-2021) - St. Xavier's College (Autonomous), Kolkata, India - CGPA 8.17/10, First Class
+  - Final project: Comparative Study of NLP Models for Text Classification (fake news detection)
+- **BSc Computer Science** (2016-2019) - St. Xavier's College (Autonomous), Kolkata, India - CGPA 7.99/10, First Class
+  - Final project: HandGX, CNN-based hand gesture / ASL recognition
 
 ### Professional Experience
-<!-- List your roles, most recent first -->
-- **[JOB_TITLE]** ([START_DATE] - [END_DATE]) - **[COMPANY]** ([LOCATION])
-  - [KEY_RESPONSIBILITY_1]
-  - [KEY_RESPONSIBILITY_2]
-  - [KEY_ACHIEVEMENT]
+- **Machine Learning Engineer** (Aug 2021 - Aug 2024) - **Sprinriver Technology Private Limited** (Kolkata, India)
+  - Built production NLP document-understanding systems (multi-document summarisation, highlight extraction) that replaced manual review; Texplicit analytics tool (backend + all ML work)
+  - Built enterprise RAG applications (GPT-3.5 Turbo, LangChain, vector search) and modular LLM orchestration and evaluation pipelines
+  - Deployed Python/Flask REST APIs serving ML models in production; full-stack (Angular, Flask) and backend (Node.js/Express) work on other products
+- **Research:** MSc thesis on computer vision for historical art (2026-present); Independent Scientific Project "Noli Me Tangere", a proposed pose-grounded human-human interaction scene-graph pipeline (about 1,000-artwork corpus)
+- **Key projects:** Study Advisor (Text-to-SQL + hybrid pgvector RAG, RAGAS benchmark), NLS Voice Assistant (ASR + local LLM + TTS), multi-label emotion classification (MLSMOTE, F1 0.81), GPT Researcher open-source contributor
 
 ### Technical Skills
-- **Primary:** [YOUR_PRIMARY_SKILLS]
-- **Secondary:** [YOUR_SECONDARY_SKILLS]
-- **Domain:** [YOUR_DOMAIN_EXPERTISE]
-- **Software:** [YOUR_TOOLS_AND_SOFTWARE]
+- **Primary:** Python, PyTorch, LLMs, RAG, LangChain, Hugging Face Transformers, NLP, prompt engineering, semantic search, RAGAS/LLM evaluation, FastAPI, Flask, REST APIs
+- **Secondary:** Computer vision (ViT, pose estimation, object detection, VLMs, OpenCV), TensorFlow/Keras, Scikit-Learn, Docker/Docker Compose, ASR/TTS, Spark, Java, C++, JavaScript, SQL
+- **Domain:** NLP and document understanding, GenAI/LLM application engineering, multimodal computer vision for cultural heritage
+- **Software:** PostgreSQL, pgvector, MongoDB, MySQL, Git, Linux, Ollama, Akka, Angular, Node.js, Vue.js
 
 ### Certifications
-<!-- List relevant certifications with dates -->
-- **[CERTIFICATION_NAME]** - [HOURS]h - completed [DATE]
+- **LangChain for LLM Application Development** - DeepLearning.AI
+- **LangChain: Chat with Your Data** - DeepLearning.AI
+- **Natural Language Processing with Classification and Vector Spaces** - Coursera
+- **Build Basic Generative Adversarial Networks (GANs)** - Coursera
+- **Python and Computer Vision Bootcamp** - ShapeAI
 
 ### Publications
-<!-- List peer-reviewed publications, if any -->
-- [AUTHOR_LIST] ([YEAR]). [TITLE]. [JOURNAL].
+- None yet.
 
 ### Awards
-<!-- List relevant awards, hackathons, competitions -->
-- [AWARD_NAME] - [EVENT] ([YEAR])
+- None listed.
 
 ### Behavioral Profile
-<!-- Your behavioral assessment results (PI, DISC, Myers-Briggs, or self-assessment) -->
-- **[TRAIT_1]** - [DESCRIPTION]
-- **[TRAIT_2]** - [DESCRIPTION]
-- **Strengths:** [YOUR_STRENGTHS]
-- **Growth areas:** [YOUR_GROWTH_AREAS]
-- **Thrives in:** [YOUR_IDEAL_ENVIRONMENT]
+- **Exploratory builder** - energised by research-heavy work and implementing new ideas; repetitive same-path work drains energy
+- **Evidence-driven** - makes informed decisions (e.g. benchmarking LLMs before choosing)
+- **Strengths:** structured problem framing, fast and deep learning of new domains, clear communication and listening, adaptable and cooperative (per reference letters)
+- **Growth areas:** lower energy for maintenance-heavy work; prefers deliberate over snap decisions
+- **Thrives in:** research-heavy teams with a sustainable pace and a considerate, respectful manager who plans realistic timelines. **Work-life balance is the #1 priority.**
 
 ### What Excites You
-<!-- What motivates you professionally -->
-- [PASSION_1]
-- [PASSION_2]
+- Implementing new ideas: research-to-product work in LLMs, RAG and multimodal/computer vision AI
+- Applied research where models are evaluated rigorously before they ship
 
 ### Target Sectors
-<!-- Industries and companies you're targeting -->
-- [SECTOR_1]: [EXAMPLE_COMPANIES]
-- [SECTOR_2]: [EXAMPLE_COMPANIES]
+- Big Tech / top-paying AI employers (Europe and India): Google, Amazon, Meta, Apple, Microsoft and comparable top-tier tech companies
+- Industrial AI research and R&D (Germany/Europe): e.g. Bosch, BMW, SAP, Zeiss, Siemens, DLR, Fraunhofer
+- AI-first product companies and scale-ups building LLM / GenAI / computer vision products
 
 ### Deal-breakers
-<!-- Hard constraints on job search. Language requirements are handled separately and
-automatically from your Languages table above - don't duplicate them here. -->
-- [DEALBREAKER_1]
-- [DEALBREAKER_2]
+- Not a full-time permanent role (no internships, working-student, thesis, part-time, freelance or fixed-term-only)
+- Salary below EUR 60,000/year (Europe) or INR 15 lakh/year (India)
+- Europe role with no possible work-permit route (EU-citizens-only, "no sponsorship", security clearance)
+- Chronic overtime / poor work-life balance culture
 
 ## Repo Structure
 - `cv/` - LaTeX CV variants (moderncv template, banking style)
